@@ -1,13 +1,14 @@
 import React from "react";
 
-function Footer() {
+function Footer({ isSidebarOpen }) {
   return (
-    <footer className="bottom-0" >
-      <hr className="translate-y-3"/>
-      <div className="bottom-0 py-3 mt-3">
-      <p className="text-sm mt-1 text-center text-gray-50">
-          &copy; {new Date().getFullYear()} YouTube Clone. All rights reserved.
-        </p>
+    <footer
+      className={`bg-gray-800 text-white p-4 transition-all duration-300 ease-in-out ${
+        isSidebarOpen ? " ml-64" : "ml-0"
+      }`} // Adjust margin dynamically
+    >
+      <div className="text-center">
+        <p>© 2025 Your Company. All rights reserved.</p>
       </div>
     </footer>
   );

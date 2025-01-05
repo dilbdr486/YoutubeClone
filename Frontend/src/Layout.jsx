@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom'
 import Sidebar from './Componenent/Sidebar/sidebar'
 import Home from './Componenent/Home/home'
 
-function Layout({ children }) {
+function Layout({ children,setShowLogin }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true) // State to control sidebar visibility
 
   const toggleSidebar = () => {
@@ -14,7 +14,7 @@ function Layout({ children }) {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} /> {/* Pass state and function to Header */}
+      <Header isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} setShowLogin={setShowLogin} /> {/* Pass state and function to Header */}
       {isSidebarOpen && <Sidebar />} {/* Conditionally render the Sidebar */}
       <main
         className={`flex-1 p-4 transition-all duration-300 ease-in-out ${

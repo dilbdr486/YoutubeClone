@@ -8,7 +8,7 @@ import { uploadOnCloudinary } from '../utils/cloudinary.js';
 
 const getAllVideos = asyncHandler(async (req, res) => {
   const { page = 1, limit = 10, query, sortBy, sortType, userId } = req.query;
-  //TODO: get all videos based on query, sort, pagination
+
   const pageNumber = Math.max(1, parseInt(page, 10));
   const pageSize = Math.max(1, parseInt(limit, 10));
   const skip = (pageNumber - 1) * pageSize;
@@ -35,10 +35,25 @@ const getAllVideos = asyncHandler(async (req, res) => {
   // Calculate pagination details
   const totalPages = Math.ceil(totalCount / pageSize);
 
-  // Send response
-  return res
-  .status(200)
-  .json(new ApiResponse({
+  if (!videos || videos.length === 0) {
+    return res.status(404).json(
+      new ApiResponse({
+        data: [],
+        meta: {
+          total: totalCount,
+          page: pageNumber,
+          pages: totalPages,
+          limit: pageSize,
+        },
+        message: 'No videos found',
+        success: true,  // Ensure success is set to true even in the case of no data
+      })
+    );
+  }
+
+  // Send response with videos
+  return res.status(200).json(
+    new ApiResponse({
       data: videos,
       meta: {
         total: totalCount,
@@ -46,10 +61,12 @@ const getAllVideos = asyncHandler(async (req, res) => {
         pages: totalPages,
         limit: pageSize,
       },
-      'message': 'Videos fetched successfully',
+      message: 'Videos fetched successfully',
+      success: true, // Ensure success is set to true
     })
   );
 });
+
 
 const publishAVideo = asyncHandler(async (req, res) => {
   const { title, description } = req.body;

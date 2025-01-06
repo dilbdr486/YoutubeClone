@@ -33,8 +33,8 @@ function Header({ isSidebarOpen, toggleSidebar,setShowLogin }) {
             </div>
             <div>
               <div className="flex gap-8">
-                <button className="flex gap-2 text-sm p-2 w-24 bg-slate-200 hover:bg-slate-300 rounded-3xl items-center">
-                  <FaPlus size={16} />
+                <button className="flex gap-2 text-sm p-2 w-20 bg-slate-200 hover:bg-slate-300 rounded-3xl items-center">
+                  <FaPlus size={10} />
                   Create
                 </button>
                 <button className="rounded-2xl p-3 hover:bg-slate-200">

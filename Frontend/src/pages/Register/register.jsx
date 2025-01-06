@@ -1,20 +1,7 @@
 import React from "react";
 import { FaGoogle } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 
-function Login({ setShowLogin }) {
-  const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Login Successful!");
-    setShowLogin(false);
-  };
-
-  const handleRegisterClick = () => {
-    navigate("/register"); // Navigate to the Register page
-  };
-
+function register() {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div
@@ -25,17 +12,25 @@ function Login({ setShowLogin }) {
         }}
       >
         <h2 className="text-lg font-bold text-center mb-4">
-          Sign in to your account
+          Sign up to your account
         </h2>
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="mb-2">
-            <label className="block text-sm font-medium mb-1">
-              Email or Username
-            </label>
+            <label className="block text-sm font-medium mb-1">Fullname</label>
             <input
               type="text"
               name="email"
-              placeholder="Enter your email or username"
+              placeholder="Enter your Fullname"
+              className="w-full p-2 border rounded-md"
+              required
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block text-sm font-medium mb-1">Username</label>
+            <input
+              type="text"
+              name="email"
+              placeholder="Enter your Username"
               className="w-full p-2 border rounded-md"
               required
             />
@@ -51,23 +46,11 @@ function Login({ setShowLogin }) {
             />
           </div>
 
-          <div className="flex justify-between mb-2">
-            <div className="flex items-center gap-1">
-              <input type="checkbox" />
-              <label className="text-sm">Remember me</label>
-            </div>
-            <div>
-              <a href="#" className="text-sm text-blue-500 hover:underline">
-                Forgot password?
-              </a>
-            </div>
-          </div>
-
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200"
           >
-            Login
+            Sign up
           </button>
         </form>
 
@@ -75,17 +58,7 @@ function Login({ setShowLogin }) {
 
         <div className="">
           <button className="flex items-center justify-center mt-2 gap-4 w-full text-center text-md border border-gray-500 py-2 rounded-md hover:border-gray-800 transition duration-200">
-            <FaGoogle /> Login with Google
-          </button>
-        </div>
-
-        <div className="flex justify-center gap-2 mt-4 items-baseline">
-          <p className="text-sm text-gray-500">Don't have an account?</p>
-          <button
-            onClick={handleRegisterClick}
-            className="text-blue-500 hover:underline text-sm"
-          >
-            Register here
+            <FaGoogle /> Login up with Google
           </button>
         </div>
       </div>
@@ -93,4 +66,4 @@ function Login({ setShowLogin }) {
   );
 }
 
-export default Login;
+export default register;

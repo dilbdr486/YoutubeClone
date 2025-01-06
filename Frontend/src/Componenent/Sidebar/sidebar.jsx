@@ -3,7 +3,7 @@ import { FaHome, FaCompass, FaHistory, FaThumbsUp } from "react-icons/fa";
 
 function Sidebar() {
   return (
-    <aside className="w-64 bg-white shadow-lg h-screen fixed left-0 top-0 pt-16">
+    <aside className="w-32 bg-white shadow-lg h-screen fixed left-0 top-0 pt-16">
       <div className="p-4">
         <ul className="space-y-4">
           <li className="flex items-center gap-3 hover:bg-gray-100 p-2 rounded-lg">

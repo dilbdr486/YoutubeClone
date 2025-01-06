@@ -59,7 +59,7 @@ const Home = () => {
         setLoading(false);
       } catch (err) {
         // Log the error for more detailed insights
-        console.error("Error fetching videos:", err.response || err);
+        // console.error("Error fetching videos:", err.response || err);
         setVideos([]);  // Reset videos in case of error
         setError(err.response?.data?.message || err.message || "Unknown error occurred.");
         setLoading(false);
@@ -70,8 +70,8 @@ const Home = () => {
   }, []);  // Empty dependency array so it runs once when the component mounts
 
   // Conditional rendering based on loading and error states
-  // if (loading) return <div>Loading videos...</div>;
-  // if (error) return <div>Error: {error}</div>;
+  if (loading) return <div>Loading videos...</div>;
+  if (error) return <div>Error: "error"</div>;
 
   return (
     <div className="flex min-h-screen flex-col items-center p-4">
